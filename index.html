@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/originals/db/34/d4/db34d40b271fb59477621550bf73ea0b.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffcc00;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question p {
+            margin: 0 0 10px;
+            font-size: 18px;
+            color: #ffcc00;
+        }
+
+        .options label {
+            margin-bottom: 10px;
+            display: block;
+            font-size: 16px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="reset"] {
+            background-color: #dc3545;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Interactive Quiz</h1>
+        <div class="question">
+            <p>1. Which programming language is known as the language of the web?</p>
+            <label><input type="radio" name="q1" value="JavaScript"> JavaScript</label>
+            <label><input type="radio" name="q1" value="Python"> Python</label>
+            <label><input type="radio" name="q1" value="Java"> Java</label>
+            <label><input type="radio" name="q1" value="C++"> C++</label>
+        </div>
+        <div class="question">
+            <p>2. Which HTML tag is used to define an internal style sheet?</p>
+            <label><input type="radio" name="q2" value="<style>">&lt;style&gt;</label>
+            <label><input type="radio" name="q2" value="<script>">&lt;script&gt;</label>
+            <label><input type="radio" name="q2" value="<css>">&lt;css&gt;</label>
+            <label><input type="radio" name="q2" value="<head>">&lt;head&gt;</label>
+        </div>
+        <div class="question">
+            <p>3. Which property is used to change the background color of an element?</p>
+            <label><input type="radio" name="q3" value="color"> color</label>
+            <label><input type="radio" name="q3" value="bgcolor"> bgcolor</label>
+            <label><input type="radio" name="q3" value="background-color"> background-color</label>
+            <label><input type="radio" name="q3" value="background"> background</label>
+        </div>
+        <div class="question">
+            <p>4. Which method is used to find the length of a string in JavaScript?</p>
+            <label><input type="radio" name="q4" value="size()"> size()</label>
+            <label><input type="radio" name="q4" value="length()"> length()</label>
+            <label><input type="radio" name="q4" value="length"> length</label>
+            <label><input type="radio" name="q4" value="getLength()"> getLength()</label>
+        </div>
+        <div class="question">
+            <p>5. Which of the following is not a CSS framework?</p>
+            <label><input type="radio" name="q5" value="Bootstrap"> Bootstrap</label>
+            <label><input type="radio" name="q5" value="Foundation"> Foundation</label>
+            <label><input type="radio" name="q5" value="Angular"> Angular</label>
+            <label><input type="radio" name="q5" value="Bulma"> Bulma</label>
+        </div>
+        <div class="button-container">
+            <button type="reset">Reset</button>
+            <button onclick="submitQuiz()">Submit</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            let score = 0;
+
+            const answers = {
+                q1: "JavaScript",
+                q2: "<style>",
+                q3: "background-color",
+                q4: "length",
+                q5: "Angular"
+            };
+
+            for (let question in answers) {
+                const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                if (userAnswer && userAnswer.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            document.getElementById('result').innerText = `You scored ${score} out of 5.`;
+        }
+    </script>
+</body>
+</html>
